@@ -37,6 +37,11 @@ var num = 2;
 var platforms = [];
 
 function renderCanvas() {
+  ctx.fillStyle = "#f0f8ff";
+  ctx.fillRect(0, 0, 270, 270);
+}
+
+function renderPlayer() {
   ctx.fillStyle = "#f08080";
   ctx.fillRect((player.x)-20, (player.y)-20, player.width, player.height);
 }
