@@ -5,13 +5,13 @@ var player = {
   y_v: 0,
   jump: true,
   height: 20,
-  width: 20
+  width: 20,
 };
 
 var keys = {
   left: false,
   right: false,
-  up: false
+  up: false,
 };
 
 var friction = 0.7;
