@@ -1,6 +1,3 @@
-const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext("2d");
-
 // Stages
 var stage1 = "
   |---------------------------------------------------------------|
@@ -59,14 +56,49 @@ function createPlat() {
 
 function renderPlat() {
   ctx.fillStyle = "#262626";
-  ctx.fillRect(platform[0].x, platform[0].y, platform[0].width, platform[0].height);
-  ctx.fillRect(platform[1].x, platform[1].y)
+  ctx.fillRect(platforms[0].x, platforms[0].y, platforms[0].width, platforms[0].height);
+  ctx.fillRect(platforms[1].x, platforms[1].y), platforms[1].width, platforms[1].height);
 }
 
-function CreateStage(StageNum) {
-  
+function keyDown(e) {
+  if(e.keyCode == 37) {
+    keys.left = true;
+  }
+  if(e.keyCode == 39) {
+    keys.right = true;
+  }
 }
 
-function GameStart() {
-  CreateStage('stage-1');
+function keyUp(e) {
+  if(e.keyCode == 37) {
+    keys.left = false;
+  }
+  if(e.keyCode == 39) {
+    keys.right = false;
+  }
 }
+
+function loop() {
+  if(keys.left) {
+    player.x += -2.5;
+  }
+  if(keys.right) {
+    player.x += 2.5;
+  }
+  renderCanvas();
+  renderPlayer();
+  renderPlat();
+}
+
+canvas = document.getElementById("canvas");
+ctx = canvas.getContext("2d");
+
+ctx.canvasHeight = 270;
+ctx.canvasWidth = 270;
+
+createPlat();
+
+document.addEventListener("keydown", keydown);
+document.addEventListener("keyup", keyup);
+
+setInterval(loop, 22);
